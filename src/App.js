@@ -4,10 +4,17 @@ import WebFont from 'webfontloader';
 import ThemeCard from './components/ThemeCard';
 import { GlobalStyles } from './theme/globalStyles';
 import { useTheme } from './theme/useTheme';
+import './App.css';
 
 // create a container
 const Container = styled.div`
-  margin: 5px auto 5px auto;
+  margin: 4rem auto 1rem auto;
+`;
+
+const Header = styled.h1`
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 5rem;
 `;
 
 function App() {
@@ -30,7 +37,6 @@ function App() {
   });
 
   const createTheme = newTheme => {
-    console.log(newTheme);
     setNewTheme(newTheme);
   }
 
@@ -40,12 +46,8 @@ function App() {
       themeLoaded && <ThemeProvider theme={ selectedTheme }>
         <GlobalStyles />
         <Container style={{fontFamily: selectedTheme.font}}>
-          <h1>Theme Builder</h1>
-          <p>
-            This is a theming system with a Theme Switcher and Theme Builder.
-            Do you want to see the source code? <a href="/" target="_blank">GitHub</a>
-          </p>
-          <ThemeCard setter={ setSelectedTheme } newTheme={ newTheme } />
+          <Header>Theme Builder</Header>
+          <ThemeCard setter={ setSelectedTheme } currentTheme ={ selectedTheme } newTheme={ newTheme } />
         </Container>
       </ThemeProvider>
     }

@@ -18,38 +18,107 @@ const ThemedButton = styled.button`
 const Wrapper = styled.li`
     padding: 48px;
     text-align: center;
-    border-radius: 4px;
-    border: 1px solid #000;
+    border-radius: 12px;
     list-style: none;
+    -webkit-box-shadow: 4px 2px 40px rgb(0 0 0 / 10%);
+    box-shadow: 4px 2px 40px rgb(0 0 0 / 10%);
 `;
 
 const Container = styled.ul`
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
-    margin-top: 3rem;
+    margin: 1rem 8rem;
     padding: 10px;
 `;
 
-const Header = styled.h2`
-    display: flex;
-    justify-content: space-around;
+const Toggle = styled.section(({active}) => `
+    position: relative;
+    width: 8vmin;
+    height: 4vmin;
+    background: ${active ? "var(--color-toggle-active)" : "var(--color-toggle)"};
+    border-radius: 50vmin;
+    cursor: pointer;
+    transition: 0.8s;
+    &.active {
+        background: var(--color-toggle-active);
+        ${Switch} {
+            left: 4vmin;
+            transform: scale(0.9) rotate(180deg);
+            background: var(--color-switch);
+            transition: 0.8s;
+        }
+    }
+`);
+
+const Switch = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3.45vmin;
+    height: 3.45vmin;
+    border: 0.3vmin solid var(--color-border);
+    border-radius: 50%;
+    transform: scale(0.9);
+    background: var(--color-switch);
+    transition: 0.8s;
+    &:before {
+        bottom: -0.1vmin;
+        left: -0.2vmin;
+        width: 3.3vmin;
+        height: 1.5vmin;
+        border-bottom-left-radius: 30vmin;
+        border-bottom-right-radius: 30vmin;
+        box-shadow: inset 0.15vmin -0.15vmin 0.15vmin var(--color-shadow);
+        content: "";
+        position: absolute;
+        border: 0.3vmin solid var(--color-border);
+        background: var(--color-pokeball);
+    }
+
+    &:after {
+        top: 1vmin;
+        left: 1.1vmin;
+        width: 0.8vmin;
+        height: 0.8vmin;
+        border-radius: 50%;
+        box-shadow: -4vmin -4vmin 0 -1.3vmin var(--color-pokeball);
+        content: "";
+        position: absolute;
+        border: 0.2vmin solid var(--color-border);
+        background: var(--color-pokeball);
+    }
 `;
 
 const ThemeCard = (props) => {
     const themeFromStore = getFromLS('all-themes');
-    const [data, setData] = useState(themeFromStore.data);
-    const [themes, setThemes] = useState([]);
-    const {setMode} = useTheme();
+    const [ data, setData ] = useState(themeFromStore.data);
+    const { setMode } = useTheme();
+    const [ switches, setSwitches ] = useState([]);
 
-    const themeSwitcher= selectedTheme => {
-        console.log(selectedTheme);
+    const themeSwitcher= (selectedTheme) => {
         setMode(selectedTheme);
         props.setter(selectedTheme);
+        switches.some((theme) => 
+            (theme?.theme?.name.toUpperCase() === selectedTheme.name.toUpperCase()) ? switchTheme(switches.indexOf(theme)) : ''
+        );
+    };
+
+    const switchTheme = (themeIndex) => {
+        setSwitches(switches.map((theme) => 
+            (switches.indexOf(theme) === themeIndex) ? {...theme, selected: true} : {...theme, selected: false} 
+        ));
     };
 
     useEffect(() => {
-        setThemes(_.keys(data));
+        const themesArray = _.keys(data);
+        let ThemesObject = []; 
+        themesArray.forEach((i) => {
+            const Obj = { theme: data[i], selected: false };
+            ThemesObject.push(Obj);
+        });
+        setSwitches(ThemesObject);
+        console.log('switches', switches);
     }, [data]);
 
     useEffect(() => {
@@ -64,28 +133,29 @@ const ThemeCard = (props) => {
 
     const ThemeCard = props => {
         return(
-            <Wrapper style={{backgroundColor: `${data[_.camelCase(props.theme.name)].colors.body}`, 
-                    color: `${data[_.camelCase(props.theme.name)].colors.text}`, 
-                    fontFamily: `${data[_.camelCase(props.theme.name)].font}`}}>
-                    <span>Click on the button to set this theme</span>
-                <ThemedButton onClick={ (theme) => themeSwitcher(props.theme) }
-                    style={{backgroundColor: `${data[_.camelCase(props.theme.name)].colors.button.background}`, 
-                    color: `${data[_.camelCase(props.theme.name)].colors.button.text}`,
-                    fontFamily: `${data[_.camelCase(props.theme.name)].font}`}}>
-                    {props.theme.name}
+            <Wrapper style={{backgroundColor: `${data[_.camelCase(props.theme.theme.name)].colors.body}`, 
+                    color: `${data[_.camelCase(props.theme.theme.name)].colors.text}`, 
+                    fontFamily: `${data[_.camelCase(props.theme.theme.name)].font}`}}>
+                <ThemedButton onClick={ () => themeSwitcher(props.theme.theme) }
+                    style={{backgroundColor: `${data[_.camelCase(props.theme.theme.name)].colors.button.background}`, 
+                    color: `${data[_.camelCase(props.theme.theme.name)].colors.button.text}`,
+                    fontFamily: `${data[_.camelCase(props.theme.theme.name)].font}`}}>
+                    {props.theme.theme.name}
                 </ThemedButton>
+                <Toggle onClick={ () => themeSwitcher(props.theme.theme) } className={props.theme.selected === true ? "active" : ""}>
+                    <Switch></Switch>
+                </Toggle>
             </Wrapper>
         )
     }
 
     return (
         <div>
-            <Header>Select a Theme from below</Header>
             <Container>
             {
-                themes.length > 0 && 
-                    themes.map(theme =>(
-                        <ThemeCard theme={data[theme]} key={data[theme].id} />
+                switches.length > 0 && 
+                    switches.map(theme =>(
+                        <ThemeCard theme={theme} key={theme.theme.id} />
                     ))
             }
             </Container>
