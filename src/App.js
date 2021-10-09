@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from "styled-components";
 import WebFont from 'webfontloader';
-import ThemeCard from './components/ThemeCard';
+import ThemeCard from './components/ThemeCard/ThemeCard';
 import { GlobalStyles } from './theme/globalStyles';
 import { useTheme } from './theme/useTheme';
 import './App.css';
@@ -21,7 +21,7 @@ function App() {
   // get the selected theme and font-list
   const { theme, themeLoaded, getFonts } = useTheme();
   const [ selectedTheme, setSelectedTheme ] = useState(theme);
-  const [newTheme, setNewTheme] = useState();
+  const [ newTheme, setNewTheme ] = useState();
 
   useEffect(() => {
     setSelectedTheme(theme);
