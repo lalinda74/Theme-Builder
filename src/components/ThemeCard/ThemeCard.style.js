@@ -1,26 +1,37 @@
 import styled, { css } from "styled-components";
 
-export const ThemedButton = styled.button`
-    border: 0;
-    display: inline-block;
-    padding: 12px 24px;
-    font-size: 14px;
-    border-radius: 4px;
-    margin-top: 5px;
-    width: 100%;
-    cursor: pointer;
+export const StyledCardBody = styled.header`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px;
 `;
 
-export const Wrapper = styled.li`
-    padding: 48px;
-    text-align: center;
-    border-radius: 12px;
+export const StyledCardTitle = styled.h5(({theme}) =>`
+    font-size: 18px;
+    font-weight: 600;
+    margin: 5px 0 0;
+    color: ${theme.colors.cardText};
+`);
+
+export const StyledWrapper = styled.li(({theme}) =>`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    border-radius: 8px;
     list-style: none;
+    min-height: 150px;
+    height: 22vh;
     -webkit-box-shadow: 4px 2px 40px rgb(0 0 0 / 10%);
     box-shadow: 4px 2px 40px rgb(0 0 0 / 10%);
-`;
+    background-image: radial-gradient( circle 321px at 8.3% 75.7%,  rgba(209,247,241,1) 0%, rgba(249,213,213,1) 81% );
+    color: ${theme.colors.text};
+    font-family: ${theme.font};
+    border: 2px solid #FFF;
+`);
 
-export const Toggle = styled.section(({active}) => `
+export const StyledToggle = styled.section(({active}) => `
     position: relative;
     width: 8vmin;
     height: 4vmin;
@@ -30,7 +41,7 @@ export const Toggle = styled.section(({active}) => `
     transition: 0.8s;
 `);
 
-export const Switch = styled.div`
+export const StyledSwitch = styled.div`
     position: absolute;
     top: 0;
     left: 0;
@@ -40,11 +51,11 @@ export const Switch = styled.div`
     border-radius: 50%;
     transform: scale(0.9);
     background: var(--color-switch);
-    transition: transform 2s ease-out;
+    transition: .8s;
     ${ props => props.active && css`
         left: 4vmin;
         transform: scale(0.9) rotate(180deg);
-        transition: transform 2s ease-out;
+        transition: .8s;
     `};
     &:before {
         bottom: -0.1vmin;

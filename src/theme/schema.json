@@ -4,103 +4,85 @@
       "id": "T_001",
       "name": "Light",
       "colors": {
-        "body": "#FFFFFF",
-        "text": "#000000",
-        "button": {
-          "text": "#FFFFFF",
-          "background": "#000000"
-        },
+        "body": "linear-gradient(to right, #d9a7c7, #fffcdc)",
+        "text": "#2c3e50",
+        "cardText": "#2c3e50",
         "link": {
-          "text": "teal",
+          "text": "#7f8c8d",
           "opacity": 1
         }
       },
       "font": "Tinos"
     },
-    "seaWave": {
+    "atlas": {
       "id": "T_002",
-      "name": "Sea Wave",
+      "name": "Atlas",
       "colors": {
-        "body": "#9be7ff",
-        "text": "#0d47a1",
-        "button": {
-          "text": "#ffffff",
-          "background": "#0d47a1"
-        },
+        "body": "#ffb387",
+        "text": "#000000",
+        "cardText": "#2c3e50",
         "link": {
-          "text": "#0d47a1",
+          "text": "#d63031",
           "opacity": 0.8
         }
       },
       "font": "Ubuntu"
     },
-    "test1": {
+    "yoda": {
       "id": "T_003",
-      "name": "test1",
+      "name": "Yoda",
       "colors": {
-        "body": "#FFFFFF",
-        "text": "#000000",
-        "button": {
-          "text": "#FFFFFF",
-          "background": "#000000"
-        },
+        "body": "#ebebfe",
+        "text": "#8b37ff",
+        "cardText": "#8b37ff",
         "link": {
-          "text": "teal",
+          "text": "#292a36",
           "opacity": 1
         }
       },
-      "font": "Tinos"
+      "font": "Arial"
     },
-    "test2": {
+    "amin": {
       "id": "T_004",
-      "name": "test2",
+      "name": "Amin",
       "colors": {
-        "body": "#9be7ff",
-        "text": "#0d47a1",
-        "button": {
-          "text": "#ffffff",
-          "background": "#0d47a1"
-        },
+        "body": "linear-gradient(to bottom, #6441a5, #2a0845)",
+        "text": "#e056fd",
+        "cardText": "#b5179e",
         "link": {
-          "text": "#0d47a1",
+          "text": "#f72585",
           "opacity": 0.8
         }
       },
-      "font": "Ubuntu"
+      "font": "Didot"
     },
-    "test3": {
+    "burning": {
       "id": "T_005",
-      "name": "test3",
+      "name": "Burning",
       "colors": {
-        "body": "#FFFFFF",
-        "text": "#000000",
-        "button": {
-          "text": "#FFFFFF",
-          "background": "#000000"
-        },
+        "body": "linear-gradient(to bottom, #cb356b, #bd3f32)",
+        "text": "#f1faee",
+        "cardText": "#e63946",
         "link": {
-          "text": "teal",
+          "text": "#a8dadc",
           "opacity": 1
         }
       },
-      "font": "Tinos"
+      "font": "Tahoma"
     },
-    "test4": {
+    "meridian": {
       "id": "T_006",
-      "name": "test4",
+      "name": "Meridian",
       "colors": {
-        "body": "#9be7ff",
-        "text": "#0d47a1",
-        "button": {
-          "text": "#ffffff",
-          "background": "#0d47a1"
-        },
+        "body": "#264653",
+        "text": "#2a9d8f",
+        "cardText": "#264653",
         "link": {
-          "text": "#0d47a1",
+          "text": "#f5f6fa",
           "opacity": 0.8
         }
       },
-      "font": "Ubuntu"
+      "font": "Trebuchet MS"
     }
   }
 }

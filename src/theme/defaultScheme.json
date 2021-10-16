@@ -1,0 +1,18 @@
+{
+  "data": {
+    "dark": {
+      "id": "T_001",
+      "name": "Light",
+      "colors": {
+        "body": "linear-gradient(to right, #000000, #434343)",
+        "text": "#FFF",
+        "cardText": "#000",
+        "link": {
+          "text": "#70a1ff",
+          "opacity": 1
+        }
+      },
+      "font": "Tinos"
+    }
+  }
+}

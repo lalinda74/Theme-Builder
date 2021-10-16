@@ -6,12 +6,14 @@ import reportWebVitals from './reportWebVitals';
 
 // loading themes
 import * as themes from './theme/schema.json';
+import * as defaultTheme from './theme/defaultScheme.json';
 
 // loading storage utils
 import { setToLS } from './utils/storage';
 
 const Index = () => {
   setToLS('all-themes', themes.default);
+  setToLS('default', defaultTheme.default);
   return (
     <App />
   )
