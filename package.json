@@ -2,6 +2,7 @@
   "name": "theme-builder",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://lalinda74.github.io/Theme-Builder",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
