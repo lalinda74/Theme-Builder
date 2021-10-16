@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Theme-Builder/static/css/main.845f8e03.chunk.css",
-    "main.js": "/Theme-Builder/static/js/main.228442b6.chunk.js",
-    "main.js.map": "/Theme-Builder/static/js/main.228442b6.chunk.js.map",
+    "main.js": "/Theme-Builder/static/js/main.ccce8f04.chunk.js",
+    "main.js.map": "/Theme-Builder/static/js/main.ccce8f04.chunk.js.map",
     "runtime-main.js": "/Theme-Builder/static/js/runtime-main.a64675a7.js",
     "runtime-main.js.map": "/Theme-Builder/static/js/runtime-main.a64675a7.js.map",
     "static/js/2.f329bd2e.chunk.js": "/Theme-Builder/static/js/2.f329bd2e.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a64675a7.js",
     "static/js/2.f329bd2e.chunk.js",
     "static/css/main.845f8e03.chunk.css",
-    "static/js/main.228442b6.chunk.js"
+    "static/js/main.ccce8f04.chunk.js"
   ]
 }
