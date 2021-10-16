@@ -19,17 +19,17 @@ const ThemeCard = (props) => {
   const themeSwitcher = (selectedTheme) => {
     setMode(selectedTheme);
     props.setter(selectedTheme);
-    props.switches.some((theme) =>
+    props.themes.some((theme) =>
       theme?.theme?.name.toUpperCase() === selectedTheme.name.toUpperCase()
-        ? switchTheme(props.switches.indexOf(theme))
+        ? switchTheme(props.themes.indexOf(theme))
         : ""
     );
   };
 
   const switchTheme = (themeIndex) => {
-    props.setSwitches(
-      props.switches.map((theme) =>
-        props.switches.indexOf(theme) === themeIndex && theme.selected === false
+    props.setThemes(
+      props.themes.map((theme) =>
+        props.themes.indexOf(theme) === themeIndex && theme.selected === false
           ? { ...theme, selected: true }
           : { ...theme, selected: false }
       )
@@ -37,8 +37,8 @@ const ThemeCard = (props) => {
   };
 
   useEffect(() => {
-    props.setSwitches(props.switches);
-  }, [props, props.switches]);
+    props.setThemes(props.themes);
+  }, [props, props.themes]);
 
   return (
     <StyledWrapper theme={data[_.camelCase(props.theme.theme.name)]}>

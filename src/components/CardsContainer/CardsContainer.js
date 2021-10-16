@@ -9,7 +9,7 @@ const CardsWrapper = (props) => {
     const themeFromStore = getFromLS('all-themes');
     const defaultThemeFromStore = getFromLS('default');
     const [ data, setData ] = useState(themeFromStore.data);
-    const [ switches, setSwitches ] = useState([]);
+    const [ themes, setThemes ] = useState([]);
 
     useEffect(() => {
         const themesArray = _.keys(data);
@@ -17,11 +17,11 @@ const CardsWrapper = (props) => {
         themesArray.forEach((i) => {
             ThemesObject.push({ theme: data[i], selected: false });
         });
-        setSwitches(ThemesObject);
+        setThemes(ThemesObject);
     }, [data]);
 
     useEffect(() => {
-        const IsAllActive = switches.some((theme) => {
+        const IsAllActive = themes.some((theme) => {
             if (theme.selected === false) {
                 return false;
             }
@@ -32,18 +32,18 @@ const CardsWrapper = (props) => {
         if (!IsAllActive) {
             props.setter(defaultThemeFromStore.data.dark);
         }
-    }, [switches]);
+    }, [themes]);
 
     return (
         <div>
             <StyledCardContainer>
             {
-                switches.length > 0 && 
-                    switches.map(theme =>(
+                themes.length > 0 && 
+                themes.map(theme =>(
                         <ThemeCard
                             setter = { props.setter }
-                            switches = { switches }
-                            setSwitches = { setSwitches }
+                            themes = { themes }
+                            setThemes = { setThemes }
                             theme = { theme }
                             key = { theme.theme.id }
                         />

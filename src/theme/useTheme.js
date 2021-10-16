@@ -4,7 +4,8 @@ import _ from 'lodash';
 
 export const useTheme = () => {
     const themes = getFromLS('all-themes');
-    const [theme, setTheme] = useState(themes.data.light);
+    const defaultTheme = getFromLS('default');
+    const [theme, setTheme] = useState(defaultTheme.data.dark);
     const [themeLoaded, setThemeLoaded] = useState(false);
 
     const setMode = mode => {
@@ -19,8 +20,8 @@ export const useTheme = () => {
 
     useEffect(() => {
         const localTheme = getFromLS('theme');
-        localTheme ? setTheme(localTheme) : setTheme(themes.data.seaWave
-            );
+        const defaultTheme = getFromLS('default');
+        localTheme ? setTheme(localTheme) : setTheme(defaultTheme.data.dark);
         setThemeLoaded(true);
     }, []);
 
